@@ -1,8 +1,14 @@
 package cn.shenyue.A4C1;
 
-import java.util.Iterator;
-import java.util.ListIterator;
+import edu.princeton.cs.algs4.StdIn;
+import edu.princeton.cs.algs4.StdOut;
 
+import java.util.Iterator;
+
+/**
+ * 栈的链式存储结构
+ * @param <T>
+ */
 public class Stack<T> implements Iterable<T> {
 
     private Node first;
@@ -48,5 +54,17 @@ public class Stack<T> implements Iterable<T> {
             current = current.next;
             return item;
         }
+    }
+
+    public static void main(String[] args) {
+        Stack<String> s = new Stack<>();
+        while(!StdIn.isEmpty()) {
+            String item = StdIn.readString();
+            if(!item.equals("-"))
+                s.push(item);
+            else if(!s.isEmpty())
+                StdOut.print(s.pop() + " ");
+        }
+        StdOut.println("(" +  s.size() + " left on stack)");
     }
 }

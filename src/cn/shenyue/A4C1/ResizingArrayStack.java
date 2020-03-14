@@ -1,7 +1,14 @@
 package cn.shenyue.A4C1;
 
+import edu.princeton.cs.algs4.StdIn;
+import edu.princeton.cs.algs4.StdOut;
+
 import java.util.Iterator;
 
+/**
+ * 栈的顺序存储结构
+ * @param <T>
+ */
 public class ResizingArrayStack<T> implements Iterable<T> {
     private T[] a = (T[]) new Object[1];
     private int N = 0;
@@ -40,5 +47,17 @@ public class ResizingArrayStack<T> implements Iterable<T> {
             return a[--i];
         }
         public void remove(){}
+    }
+    public static void main(String[] args) {
+        ResizingArrayStack<String> s = new ResizingArrayStack<>();
+        while(!StdIn.isEmpty()) {
+            String item = StdIn.readString();
+            if(!item.equals("-"))
+                s.push(item);
+            else if(!s.isEmpty())
+                StdOut.print(s.pop() + " ");
+        }
+        for(String i: s) StdOut.println(i);
+        StdOut.println("(" +  s.size() + " left on stack)");
     }
 }
